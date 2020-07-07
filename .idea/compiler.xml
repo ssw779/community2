@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="community.euerka" />
+        <module name="community.common.api" />
+        <module name="community.getway" />
+        <module name="community.goods" />
+        <module name="community.purchaserecord.api" />
+        <module name="communtiy.banner.api" />
+        <module name="community.goods.api" />
+        <module name="communtiy.order.api" />
+        <module name="community.banner" />
+        <module name="community.purchaserecord" />
+        <module name="communtiy.order" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="community.banner" target="1.8" />
+      <module name="community.common.api" target="1.8" />
+      <module name="community.euerka" target="1.8" />
+      <module name="community.getway" target="1.8" />
+      <module name="community.goods" target="1.8" />
+      <module name="community.goods.api" target="1.8" />
+      <module name="community.parent" target="1.8" />
+      <module name="community.purchaserecord" target="1.8" />
+      <module name="community.purchaserecord.api" target="1.8" />
+      <module name="communtiy.banner.api" target="1.8" />
+      <module name="communtiy.order" target="1.8" />
+      <module name="communtiy.order.api" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
