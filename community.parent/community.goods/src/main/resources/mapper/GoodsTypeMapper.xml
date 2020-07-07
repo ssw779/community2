@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.GoodsTypeMapper">
+
+    <select id="getShoptypeById" resultType="com.zb.pojo.Goodstype">
+        select
+                id as id,
+                typeName as typeName,
+                parentId as parentId
+        from goodstype
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getShoptypeListByPojo" resultType="com.zb.pojo.Goodstype" parameterType="com.zb.pojo.Goodstype">
+        select
+                id as id,
+                typeName as typeName,
+                parentId as parentId
+        from goodstype
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="typeName != null and typeName!=''">
+                    and typeName=#{typeName}
+                </if>
+                <if test="parentId != null and parentId!=''">
+                    and parentId=#{parentId}
+                </if>
+        </trim>
+
+    </select>
+
+
+
+    <insert id="insertShoptype" parameterType="com.zb.pojo.Goodstype">
+        insert into goodstype(
+                        typeName,
+                        parentId)
+        values(
+                     #{typeName},
+                    #{parentId})
+    </insert>
+
+    <update id="updateShoptype" parameterType="com.zb.pojo.Goodstype">
+        update goodstype
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="typeName != null and typeName!=''">
+                            typeName=#{typeName},
+                        </if>
+                        <if test="parentId != null and parentId!=''">
+                            parentId=#{parentId}
+                        </if>
+        </trim>
+    </update>
+</mapper>

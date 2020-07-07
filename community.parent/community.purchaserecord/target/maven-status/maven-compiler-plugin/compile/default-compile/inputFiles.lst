@@ -1,0 +1,7 @@
+D:\idea2020workSpace\community\community.parent\community.purchaserecord\src\main\java\com\zb\PurchaserecordApp.java
+D:\idea2020workSpace\community\community.parent\community.purchaserecord\src\main\java\com\zb\service\impl\PurchaseRecordServiceImpl.java
+D:\idea2020workSpace\community\community.parent\community.purchaserecord\src\main\java\com\zb\mapper\CommunityTaskHisMapper.java
+D:\idea2020workSpace\community\community.parent\community.purchaserecord\src\main\java\com\zb\config\RabbitMQConfig.java
+D:\idea2020workSpace\community\community.parent\community.purchaserecord\src\main\java\com\zb\mapper\CommunityPurchaserecordMapper.java
+D:\idea2020workSpace\community\community.parent\community.purchaserecord\src\main\java\com\zb\job\ReceiveTaskJob.java
+D:\idea2020workSpace\community\community.parent\community.purchaserecord\src\main\java\com\zb\service\PurchaseRecordService.java

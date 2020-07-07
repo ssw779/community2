@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.CommunityTaskMapper">
+
+    <select id="getCommunityTaskById" resultType="com.zb.pojo.CommunityTask">
+        select
+        id as id,
+        create_time as createTime,
+        update_time as updateTime,
+        delete_time as deleteTime,
+        task_type as taskType,
+        mq_exchange as mqExchange,
+        mq_routingkey as mqRoutingkey,
+        request_body as requestBody,
+        version as version,
+        status as status,
+        errormsg as errormsg
+        from community_task
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+
+    <insert id="insertCommunityTask" parameterType="com.zb.pojo.CommunityTask">
+        insert into community_task(
+                         id,
+                        create_time,
+                        update_time,
+                        delete_time,
+                        task_type,
+                        mq_exchange,
+                        mq_routingkey,
+                        request_body,
+                        version,
+                        status,
+                        errormsg)
+        values(
+                     #{id},
+                     #{createTime},
+                     #{updateTime},
+                     #{deleteTime},
+                     #{taskType},
+                     #{mqExchange},
+                     #{mqRoutingkey},
+                     #{requestBody},
+                     #{version},
+                     #{status},
+                    #{errormsg})
+    </insert>
+
+
+
+    <insert id="insertCommunityTaskHis" parameterType="com.zb.pojo.CommunityTask">
+        insert into community_task_his(
+                        create_time,
+                        update_time,
+                        delete_time,
+                        task_type,
+                        mq_exchange,
+                        mq_routingkey,
+                        request_body,
+                        version,
+                        status,
+                        errormsg)
+        values(
+                     #{createTime},
+                     NOW(),
+                     #{deleteTime},
+                     #{taskType},
+                     #{mqExchange},
+                     #{mqRoutingkey},
+                     #{requestBody},
+                     #{version},
+                     #{status},
+                    #{errormsg})
+    </insert>
+
+
+
+    <update id="updateCommunityTask" parameterType="com.zb.pojo.CommunityTask">
+        update community_task
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="createTime != null and createTime!=''">
+                create_time=#{createTime},
+            </if>
+            <if test="updateTime != null and updateTime!=''">
+                update_time=#{updateTime},
+            </if>
+            <if test="deleteTime != null and deleteTime!=''">
+                delete_time=#{deleteTime},
+            </if>
+            <if test="taskType != null and taskType!=''">
+                task_type=#{taskType},
+            </if>
+            <if test="mqExchange != null and mqExchange!=''">
+                mq_exchange=#{mqExchange},
+            </if>
+            <if test="mqRoutingkey != null and mqRoutingkey!=''">
+                mq_routingkey=#{mqRoutingkey},
+            </if>
+            <if test="requestBody != null and requestBody!=''">
+                request_body=#{requestBody},
+            </if>
+            <if test="version != null and version!=''">
+                version=#{version},
+            </if>
+            <if test="status != null and status!=''">
+                status=#{status},
+            </if>
+            <if test="errormsg != null and errormsg!=''">
+                errormsg=#{errormsg}
+            </if>
+        </trim>
+    </update>
+    <update id="updateCommunityTaskHis" parameterType="com.zb.pojo.CommunityTask">
+        update community_task_his
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="createTime != null and createTime!=''">
+                create_time=#{createTime},
+            </if>
+            <if test="updateTime != null and updateTime!=''">
+                update_time=#{updateTime},
+            </if>
+            <if test="deleteTime != null and deleteTime!=''">
+                delete_time=#{deleteTime},
+            </if>
+            <if test="taskType != null and taskType!=''">
+                task_type=#{taskType},
+            </if>
+            <if test="mqExchange != null and mqExchange!=''">
+                mq_exchange=#{mqExchange},
+            </if>
+            <if test="mqRoutingkey != null and mqRoutingkey!=''">
+                mq_routingkey=#{mqRoutingkey},
+            </if>
+            <if test="requestBody != null and requestBody!=''">
+                request_body=#{requestBody},
+            </if>
+            <if test="version != null and version!=''">
+                version=#{version},
+            </if>
+            <if test="status != null and status!=''">
+                status=#{status},
+            </if>
+            <if test="errormsg != null and errormsg!=''">
+                errormsg=#{errormsg}
+            </if>
+        </trim>
+    </update>
+
+    <select id="getAMinuteAgoTask" resultType="com.zb.pojo.CommunityTask">
+
+        select
+                id as id,
+                create_time as createTime,
+                update_time as updateTime,
+                delete_time as deleteTime,
+                task_type as taskType,
+                mq_exchange as mqExchange,
+                mq_routingkey as mqRoutingkey,
+                request_body as requestBody,
+                version as version,
+                status as status,
+                errormsg as errormsg
+        from community_task
+          WHERE TIMESTAMPDIFF( MINUTE,update_time, NOW())>1
+    </select>
+
+    <update id="updateTaskversion" parameterType="com.zb.pojo.CommunityTask">
+
+    update community_task set version=version+1 where id=#{id} and version=#{version}
+
+</update>
+    <delete id="delTask">
+
+
+        delete from community_task where id=#{id}
+    </delete>
+
+    <update id="updateTaskTime">
+
+         update community_task set update_time=NOW()  where id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,29 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: gateway-server
+
+#发布到eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:ok@localhost:8001/eureka/
+      #路由 随机切换
+zuul:
+  routes:
+    myGoodsServer: #自定义的别名
+      path: /goods/**  #映射的url路径 #http://localhost:8003/community/showUser?id=1
+      serviceId: goodsServer #具体的微服务的名称
+
+#    myorderserver:
+#      path: /order/**
+#      serviceId: order-consumer  #模拟多个微服务模块的配置
+#限流
+#  ratelimit:
+#    enabled: true #开启限流
+#    policies:
+#      myuser-consumer:
+#        limit: 10 #60s 内请求超过 3 次，服务端就抛出异常，60s 后可以恢复正常请求
+#        refresh-interval: 60
+#        type: origin #针对 IP 进行限流，不影响其他 IP

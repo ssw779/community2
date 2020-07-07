@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.GoodsMapper">
+
+    <select id="getGoodsById" resultType="com.zb.pojo.Goods">
+        select
+        id as id,
+        storeId as storeId,
+        storeType as storeType,
+        storeName as storeName,
+        goodsName as goodsName,
+        goodsDesc as goodsDesc,
+        brand as brand,
+        goodsPrice as goodsPrice,
+        isHotGoods as isHotGoods,
+        salesvolume as salesvolume,
+        repertory as repertory,
+        goodsType as goodsType,
+        takesType as takesType,
+        score as score,
+        checkCount as checkCount,
+        isPromotion as isPromotion,
+        shopStatus as shopStatus,
+        putawayTime as putawayTime,
+        matter as matter
+        from goods
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getGoodsList" resultType="com.zb.pojo.Goods" parameterType="com.zb.pojo.Goods">
+        select
+        id as id,
+        storeId as storeId,
+        storeType as storeType,
+        storeName as storeName,
+        goodsName as goodsName,
+        goodsDesc as goodsDesc,
+        brand as brand,
+        goodsPrice as goodsPrice,
+        isHotGoods as isHotGoods,
+        repertory as repertory,
+        salesvolume as salesvolume,
+        goodsType as goodsType,
+        takesType as takesType,
+        score as score,
+        checkCount as checkCount,
+        isPromotion as isPromotion,
+        shopStatus as shopStatus,
+        putawayTime as putawayTime,
+        matter as matter
+        from goods
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null and id!=''">
+                and id=#{id}
+            </if>
+            <if test="storeId != null and storeId!=''">
+                and storeId=#{storeId}
+            </if>
+            <if test="storeType != null and storeType!=''">
+                and storeType=#{storeType}
+            </if>
+            <if test="storeName != null and storeName!=''">
+                and storeName=#{storeName}
+            </if>
+            <if test="goodsName != null and goodsName!=''">
+                and goodsName=#{goodsName}
+            </if>
+            <if test="goodsDesc != null and goodsDesc!=''">
+                and goodsDesc=#{goodsDesc}
+            </if>
+            <if test="brand != null and brand!=''">
+                and brand=#{brand}
+            </if>
+            <if test="startPrice != null and startPrice!='' and endPrice!=null and endPrice!=''">
+                and goodsPrice between #{startPrice} and #{endPrice}
+            </if>
+            <if test="isHotGoods != null and isHotGoods!=''">
+                and isHotGoods=#{isHotGoods}
+            </if>
+            <if test="repertory != null and repertory!=''">
+                and repertory >0
+            </if>
+            <if test="goodsType != null and goodsType!=''">
+                and goodsType=#{goodsType}
+            </if>
+            <if test="takesType != null and takesType!=''">
+                and takesType=#{takesType}
+            </if>
+
+            <if test="checkCount != null and checkCount!=''">
+                and checkCount=#{checkCount}
+            </if>
+            <if test="isPromotion != null and isPromotion!=''">
+                and isPromotion=#{isPromotion}
+            </if>
+            <if test="shopStatus != null and shopStatus!=''">
+                and shopStatus=#{shopStatus}
+            </if>
+
+            <if test="matter != null and matter!=''">
+                and matter=#{matter}
+            </if>
+
+        </trim>
+        <if test="putawayTime != null and putawayTime!=''">
+            ORDER BY putawayTime desc
+        </if>
+        <if test="score != null and score!=''">
+            ORDER BY score desc
+        </if>
+        <if test="salesvolume!=null and salesvolume!=''">
+            ORDER BY salesvolume desc
+        </if>
+        <if test="index != null and size != null ">
+            limit #{index},#{size}
+        </if>
+    </select>
+
+    <select id="getGoodsCount" resultType="Integer" parameterType="com.zb.pojo.Goods">
+        select count(*) from goods
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null and id!=''">
+                and id=#{id}
+            </if>
+            <if test="storeId != null and storeId!=''">
+                and storeId=#{storeId}
+            </if>
+            <if test="storeType != null and storeType!=''">
+                and storeType=#{storeType}
+            </if>
+            <if test="storeName != null and storeName!=''">
+                and storeName=#{storeName}
+            </if>
+            <if test="goodsName != null and goodsName!=''">
+                and goodsName=#{goodsName}
+            </if>
+            <if test="goodsDesc != null and goodsDesc!=''">
+                and goodsDesc=#{goodsDesc}
+            </if>
+            <if test="brand != null and brand!=''">
+                and brand=#{brand}
+            </if>
+            <if test="goodsPrice != null and goodsPrice!=''">
+                and goodsPrice=#{goodsPrice}
+            </if>
+            <if test="isHotGoods != null and isHotGoods!=''">
+                and isHotGoods=#{isHotGoods}
+            </if>
+            <if test="repertory != null and repertory!=''">
+                and repertory=#{repertory}
+            </if>
+            <if test="goodsType != null and goodsType!=''">
+                and goodsType=#{goodsType}
+            </if>
+            <if test="takesType != null and takesType!=''">
+                and takesType=#{takesType}
+            </if>
+            <if test="score != null and score!=''">
+                and score=#{score}
+            </if>
+            <if test="checkCount != null and checkCount!=''">
+                and checkCount=#{checkCount}
+            </if>
+            <if test="isPromotion != null and isPromotion!=''">
+                and isPromotion=#{isPromotion}
+            </if>
+            <if test="shopStatus != null and shopStatus!=''">
+                and shopStatus=#{shopStatus}
+            </if>
+            <if test="putawayTime != null and putawayTime!=''">
+                and putawayTime=#{putawayTime}
+            </if>
+            <if test="matter != null and matter!=''">
+                and matter=#{matter}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertGoods" parameterType="com.zb.pojo.Goods">
+        insert into goods(
+                        storeId,
+                        storeType,
+                        storeName,
+                        goodsName,
+                        goodsDesc,
+                        brand,
+                        goodsPrice,
+                        isHotGoods,
+                        repertory,
+                        salesvolume,
+                        goodsType,
+                        takesType,
+                        score,
+                        checkCount,
+                        isPromotion,
+                        shopStatus,
+                        putawayTime,
+                        matter)
+        values(
+                     #{storeId},
+                     #{storeType},
+                     #{storeName},
+                     #{goodsName},
+                     #{goodsDesc},
+                     #{brand},
+                     #{goodsPrice},
+                     #{isHotGoods},
+                     #{repertory},
+                     #{salesvolume},
+                     #{goodsType},
+                     #{takesType},
+                     #{score},
+                     #{checkCount},
+                     #{isPromotion},
+                     #{shopStatus},
+                     #{putawayTime},
+                    #{matter})
+    </insert>
+
+    <update id="updateGoods" parameterType="com.zb.pojo.Goods">
+        update goods
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="storeId != null and storeId!=''">
+                storeId=#{storeId},
+            </if>
+            <if test="storeType != null and storeType!=''">
+                storeType=#{storeType},
+            </if>
+            <if test="storeName != null and storeName!=''">
+                storeName=#{storeName},
+            </if>
+            <if test="goodsName != null and goodsName!=''">
+                goodsName=#{goodsName},
+            </if>
+            <if test="goodsDesc != null and goodsDesc!=''">
+                goodsDesc=#{goodsDesc},
+            </if>
+            <if test="brand != null and brand!=''">
+                brand=#{brand},
+            </if>
+            <if test="goodsPrice != null and goodsPrice!=''">
+                goodsPrice=#{goodsPrice},
+            </if>
+            <if test="isHotGoods != null and isHotGoods!=''">
+                isHotGoods=#{isHotGoods},
+            </if>
+            <if test="repertory != null and repertory!=''">
+                repertory=#{repertory},
+            </if>
+            <if test="salesvolume!=null and salesvolume!=''">
+                salesvolume=#{salesvolume},
+            </if>
+            <if test="goodsType != null and goodsType!=''">
+                goodsType=#{goodsType},
+            </if>
+            <if test="takesType != null and takesType!=''">
+                takesType=#{takesType},
+            </if>
+            <if test="score != null and score!=''">
+                score=#{score},
+            </if>
+            <if test="checkCount != null and checkCount!=''">
+                checkCount=#{checkCount},
+            </if>
+            <if test="isPromotion != null and isPromotion!=''">
+                isPromotion=#{isPromotion},
+            </if>
+            <if test="shopStatus != null and shopStatus!=''">
+                shopStatus=#{shopStatus},
+            </if>
+            <if test="putawayTime != null and putawayTime!=''">
+                putawayTime=#{putawayTime},
+            </if>
+            <if test="matter != null and matter!=''">
+                matter=#{matter}
+            </if>
+        </trim>
+    </update>
+</mapper>

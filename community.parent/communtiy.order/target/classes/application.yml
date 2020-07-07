@@ -1,0 +1,29 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: ordersServer
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/community_order
+    username: root
+    password: ok
+  redis:
+    host: 127.0.0.1
+    password: ok
+    port: 6379
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:ok@localhost:8001/eureka/
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#
+#feign:
+#  hystrix:
+#    enabled: true
+
+logging:
+  level:
+    com.zb.mapper: debug

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.QgGoodsMapper">
+
+
+
+    <select id="getQgGoodsList" resultType="com.zb.pojo.QgGoods" parameterType="com.zb.pojo.QgGoods">
+        select
+                id as id,
+                 goodsNo as  goodsNo,
+                 goodsName as  goodsName,
+                storeNo as storeNo,
+                inventory as inventory
+        from qg_goods
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test=" goodsNo != null and  goodsNo!=''">
+                    and  goodsNo=#{ goodsNo}
+                </if>
+                <if test=" goodsName != null and  goodsName!=''">
+                    and  goodsName=#{ goodsName}
+                </if>
+                <if test="storeNo != null and storeNo!=''">
+                    and storeNo=#{storeNo}
+                </if>
+                <if test="inventory != null and inventory!=''">
+                    and inventory=#{inventory}
+                </if>
+        </trim>
+
+    </select>
+
+    <select id="getQgGoodsCount" resultType="Integer" parameterType="com.zb.pojo.QgGoods">
+        select count(*) from qg_goods
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test=" goodsNo != null and  goodsNo!=''">
+                    and  goodsNo=#{ goodsNo}
+                </if>
+                <if test=" goodsName != null and  goodsName!=''">
+                    and  goodsName=#{ goodsName}
+                </if>
+                <if test="storeNo != null and storeNo!=''">
+                    and storeNo=#{storeNo}
+                </if>
+                <if test="inventory != null and inventory!=''">
+                    and inventory=#{inventory}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertQgGoods" parameterType="com.zb.pojo.QgGoods">
+        insert into qg_goods(
+                         goodsNo,
+                         goodsName,
+                        storeNo,
+                        inventory)
+        values(
+                     #{ goodsNo},
+                     #{ goodsName},
+                     #{storeNo},
+                    #{inventory})
+    </insert>
+
+    <update id="updateQgGoods" parameterType="com.zb.pojo.QgGoods">
+        update qg_goods
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test=" goodsNo != null and  goodsNo!=''">
+                             goodsNo=#{ goodsNo},
+                        </if>
+                        <if test=" goodsName != null and  goodsName!=''">
+                             goodsName=#{ goodsName},
+                        </if>
+                        <if test="storeNo != null and storeNo!=''">
+                            storeNo=#{storeNo},
+                        </if>
+                        <if test="inventory != null and inventory!=''">
+                            inventory=#{inventory}
+                        </if>
+        </trim>
+    </update>
+</mapper>

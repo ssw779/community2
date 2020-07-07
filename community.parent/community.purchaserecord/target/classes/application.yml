@@ -1,0 +1,19 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: purchaserecordServer
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/community_purchaserecord
+    username: root
+    password: ok
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:ok@localhost:8001/eureka/
+logging:
+  level:
+    com.zb.mapper: debug

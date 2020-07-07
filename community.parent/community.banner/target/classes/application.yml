@@ -1,0 +1,11 @@
+myes:
+  host: 127.0.0.1:9200
+server:
+  port: 9002
+spring:
+  application:
+    name: bannerServer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:ok@localhost:8001/eureka/

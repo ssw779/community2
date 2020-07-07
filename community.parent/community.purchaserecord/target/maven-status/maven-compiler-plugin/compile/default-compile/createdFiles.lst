@@ -1,0 +1,7 @@
+com\zb\mapper\CommunityPurchaserecordMapper.class
+com\zb\mapper\CommunityTaskHisMapper.class
+com\zb\config\RabbitMQConfig.class
+com\zb\PurchaserecordApp.class
+com\zb\service\PurchaseRecordService.class
+com\zb\job\ReceiveTaskJob.class
+com\zb\service\impl\PurchaseRecordServiceImpl.class

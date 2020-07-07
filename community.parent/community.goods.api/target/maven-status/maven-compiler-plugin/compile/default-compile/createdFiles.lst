@@ -1,0 +1,11 @@
+com\zb\pojo\QgGoods.class
+com\zb\feign\StoreFeignClient.class
+com\zb\vo\ImageVo.class
+com\zb\feign\TemGoodsFeignClient.class
+com\zb\pojo\Goods.class
+com\zb\feign\GoodsFeignClient.class
+com\zb\pojo\Goodstype.class
+com\zb\pojo\Store.class
+com\zb\pojo\TempGoods.class
+com\zb\vo\StoreVo.class
+com\zb\pojo\Image.class

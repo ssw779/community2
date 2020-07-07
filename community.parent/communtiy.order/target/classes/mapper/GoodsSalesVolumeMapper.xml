@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.GoodsSalesVolumeMapper">
+    <insert id="insertGoodsSalesVolume" parameterType="com.zb.pojo.GoodsSalesVolume">
+    insert goodssalesvolume values(null,#{goodsId},#{salesVolume})
+
+
+</insert>
+    <update id="updateGoodsSalesVolume" parameterType="com.zb.pojo.GoodsSalesVolume">
+        update goodssalesvolume set salesVolume=#{salesVolume} where goodsId=#{goodsId}
+    </update>
+
+    <select id="getGoodsSalesVolume" resultType="int">
+
+select count(*) from goodssalesvolume where goodsId=#{goodsId}
+    </select>
+
+</mapper>  

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.StoreMapper">
+
+
+    <select id="elsGetStore" resultType="com.zb.pojo.Store">
+    select s.*,i.`imgUrl` as imgurl from `store` s, `image` i
+    where s.`id`=i.`targetId` and i.`type`=1 and i.`postion`=1
+
+
+    </select>
+
+
+    <select id="getStoreById" resultType="com.zb.pojo.Store">
+        select
+        id as id,
+        storeName as storeName,
+        storeType as storeType,
+        shopParenType as shopParenType,
+        shopType as shopType,
+        address as address,
+        cityId as cityId,
+        `desc` as `desc`,
+        rule as rule,
+        score as score,
+        isHotStore as isHotStore,
+        isPromotion as isPromotion,
+        isPay as isPay,
+        startTime as startTime,
+        endTime as endTime
+        from store
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getStoreListByMap" resultType="com.zb.pojo.Store" parameterType="com.zb.vo.StoreVo">
+        select
+        id as id,
+        storeName as storeName,
+        storeType as storeType,
+        shopParenType as shopParenType,
+        shopType as shopType,
+        address as address,
+        cityId as cityId,
+        `desc` as `desc`,
+        rule as rule,
+        score as score,
+        isHotStore as isHotStore,
+        isPromotion as isPromotion,
+        isPay as isPay,
+        startTime as startTime,
+        endTime as endTime
+        from store
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null and id!=''">
+                and id=#{id}
+            </if>
+            <if test="storeName != null and storeName!=''">
+                and storeName=#{storeName}
+            </if>
+            <if test="storeType != null and storeType!=''">
+                and storeType=#{storeType}
+            </if>
+
+
+            <if test="shopParenType != null and shopParenType!=''">
+                and shopParenType=#{shopParenType}
+            </if>
+
+            <if test="shopType != null and shopType!=''">
+                and shopType=#{shopType}
+            </if>
+            <if test="address != null and address!=''">
+                and address=#{address}
+            </if>
+            <if test="cityId != null and cityId!=''">
+                and cityId=#{cityId}
+            </if>
+            <if test="desc != null and desc!=''">
+                and desc=#{desc}
+            </if>
+            <if test="rule != null and rule!=''">
+                and rule=#{rule}
+            </if>
+            <if test="score != null and score!=''">
+                and score=#{score}
+            </if>
+            <if test="isHotStore != null and isHotStore!=''">
+                and isHotStore=#{isHotStore}
+            </if>
+            <if test="isPromotion != null and isPromotion!=''">
+                and isPromotion=#{isPromotion}
+            </if>
+            <if test="isPay != null and isPay!=''">
+                and isPay=#{isPay}
+            </if>
+            <if test="startTime != null and startTime!=''">
+                and startTime=#{startTime}
+            </if>
+            <if test="endTime != null and endTime!=''">
+                and endTime=#{endTime}
+            </if>
+        </trim>
+        <if test="index != null and size != null ">
+            limit #{index},#{size}
+        </if>
+    </select>
+
+    <select id="getStoreCountByMap" resultType="Integer" parameterType="com.zb.vo.StoreVo">
+        select count(*) from store
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null and id!=''">
+                and id=#{id}
+            </if>
+            <if test="storeName != null and storeName!=''">
+                and storeName=#{storeName}
+            </if>
+            <if test="storeType != null and storeType!=''">
+                and storeType=#{storeType}
+            </if>
+            <if test="shopType != null and shopType!=''">
+                and shopType=#{shopType}
+            </if>
+            <if test="address != null and address!=''">
+                and address=#{address}
+            </if>
+            <if test="cityId != null and cityId!=''">
+                and cityId=#{cityId}
+            </if>
+            <if test="desc != null and desc!=''">
+                and desc=#{desc}
+            </if>
+            <if test="rule != null and rule!=''">
+                and rule=#{rule}
+            </if>
+            <if test="score != null and score!=''">
+                and score=#{score}
+            </if>
+            <if test="isHotStore != null and isHotStore!=''">
+                and isHotStore=#{isHotStore}
+            </if>
+            <if test="isPromotion != null and isPromotion!=''">
+                and isPromotion=#{isPromotion}
+            </if>
+            <if test="isPay != null and isPay!=''">
+                and isPay=#{isPay}
+            </if>
+            <if test="startTime != null and startTime!=''">
+                and startTime=#{startTime}
+            </if>
+            <if test="endTime != null and endTime!=''">
+                and endTime=#{endTime}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertStore" parameterType="com.zb.pojo.Store">
+        insert into store(
+                        storeName,
+                        storeType,
+                        shopType,
+                        address,
+                        cityId,
+                        desc,
+                        rule,
+                        score,
+                        isHotStore,
+                        isPromotion,
+                        isPay,
+                        startTime,
+                        endTime)
+        values(
+                     #{storeName},
+                     #{storeType},
+                     #{shopType},
+                     #{address},
+                     #{cityId},
+                     #{desc},
+                     #{rule},
+                     #{score},
+                     #{isHotStore},
+                     #{isPromotion},
+                     #{isPay},
+                     #{startTime},
+                    #{endTime})
+    </insert>
+
+    <update id="updateStore" parameterType="com.zb.pojo.Store">
+        update store
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="storeName != null and storeName!=''">
+                storeName=#{storeName},
+            </if>
+            <if test="storeType != null and storeType!=''">
+                storeType=#{storeType},
+            </if>
+            <if test="shopType != null and shopType!=''">
+                shopType=#{shopType},
+            </if>
+            <if test="address != null and address!=''">
+                address=#{address},
+            </if>
+            <if test="cityId != null and cityId!=''">
+                cityId=#{cityId},
+            </if>
+            <if test="desc != null and desc!=''">
+                desc=#{desc},
+            </if>
+            <if test="rule != null and rule!=''">
+                rule=#{rule},
+            </if>
+            <if test="score != null and score!=''">
+                score=#{score},
+            </if>
+            <if test="isHotStore != null and isHotStore!=''">
+                isHotStore=#{isHotStore},
+            </if>
+            <if test="isPromotion != null and isPromotion!=''">
+                isPromotion=#{isPromotion},
+            </if>
+            <if test="isPay != null and isPay!=''">
+                isPay=#{isPay},
+            </if>
+            <if test="startTime != null and startTime!=''">
+                startTime=#{startTime},
+            </if>
+            <if test="endTime != null and endTime!=''">
+                endTime=#{endTime}
+            </if>
+        </trim>
+    </update>
+</mapper>

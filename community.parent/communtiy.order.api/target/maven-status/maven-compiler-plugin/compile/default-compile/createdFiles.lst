@@ -1,0 +1,5 @@
+com\zb\feign\CommunityTaskFeignClient.class
+com\zb\pojo\Orders.class
+com\zb\pojo\GoodsSalesVolume.class
+com\zb\feign\OrderFeignClient.class
+com\zb\pojo\CommunityTask.class

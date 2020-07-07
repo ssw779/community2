@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.ImageMapper">
+
+
+
+    <select id="getImageListByMap" resultType="com.zb.pojo.Image" parameterType="java.util.Map">
+        select
+                id as id,
+                type as type,
+                targetId as targetId,
+                imgUrl as imgUrl,
+                postion as postion
+        from image
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="type != null and type!=''">
+                    and type=#{type}
+                </if>
+                <if test="targetId != null and targetId!=''">
+                    and targetId=#{targetId}
+                </if>
+                <if test="imgUrl != null and imgUrl!=''">
+                    and imgUrl=#{imgUrl}
+                </if>
+                <if test="postion != null and postion!=''">
+                    and postion in (#{postion})
+                </if>
+        </trim>
+
+    </select>
+
+
+
+    <insert id="insertImage" parameterType="com.zb.pojo.Image">
+        insert into image(
+                        type,
+                        targetId,
+                        imgUrl,
+                        postion)
+        values(
+                     #{type},
+                     #{targetId},
+                     #{imgUrl},
+                    #{postion})
+    </insert>
+
+    <update id="updateImage" parameterType="com.zb.pojo.Image">
+        update image
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="type != null and type!=''">
+                            type=#{type},
+                        </if>
+                        <if test="targetId != null and targetId!=''">
+                            targetId=#{targetId},
+                        </if>
+                        <if test="imgUrl != null and imgUrl!=''">
+                            imgUrl=#{imgUrl},
+                        </if>
+                        <if test="postion != null and postion!=''">
+                            postion=#{postion}
+                        </if>
+        </trim>
+    </update>
+</mapper>

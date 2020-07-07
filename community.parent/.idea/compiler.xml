@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="community.common.api" />
+        <module name="community.euerka" />
+        <module name="community.getway" />
+        <module name="community.goods" />
+        <module name="community.zipkin" />
+        <module name="community.goods.api" />
+        <module name="community.banner" />
+        <module name="communtiy.dashboard" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="communtiy.dashboard" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

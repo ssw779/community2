@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.OrdersMapper">
+    <select id="getGoodsSalesVolume" resultType="com.zb.pojo.Orders">
+        SELECT goodsNo, SUM(`count`)AS salesVolume FROM `orders`
+         WHERE storeNo=#{storeNo}  AND goodsNo=#{goodsNo} AND orderStatus=2
+    </select>
+
+    <select id="getOrdersById" resultType="com.zb.pojo.Orders">
+        select
+        id as id,
+        userId as userId,
+        goodsType as goodsType,
+        goodsNo as goodsNo,
+        goodsName as goodsName,
+        orderNo as orderNo,
+        tardeNo as tardeNo,
+        storeNo as storeNo,
+        storeName as storeName,
+        count as count,
+        createTime as createTime,
+        finshTime as finshTime,
+        payType as payType,
+        payAmount as payAmount,
+        orderStatus as orderStatus,
+        modifiTime as modifiTime
+        from orders
+        <trim prefix="where" prefixOverrides="and | or">
+            <!--   <if test="id != null">
+                   and id=#{id}
+               </if>-->
+            <if test="orderNo!= null">
+                and orderNo=#{orderNo}
+            </if>
+        </trim>
+    </select>
+
+
+    <select id="getOrdersList" resultType="com.zb.pojo.Orders" parameterType="com.zb.pojo.Orders">
+        select
+        id as id,
+        userId as userId,
+        goodsType as goodsType,
+        goodsNo as goodsNo,
+        goodsName as goodsName,
+        orderNo as orderNo,
+        tardeNo as tardeNo,
+        storeNo as storeNo,
+        storeName as storeName,
+        count as count,
+        createTime as createTime,
+        finshTime as finshTime,
+        payType as payType,
+        payAmount as payAmount,
+        orderStatus as orderStatus,
+        modifiTime as modifiTime
+        from orders
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null and id!=''">
+                and id=#{id}
+            </if>
+            <if test="userId != null and userId!=''">
+                and userId=#{userId}
+            </if>
+            <if test="goodsType != null and goodsType!=''">
+                and goodsType=#{goodsType}
+            </if>
+            <if test="goodsNo != null and goodsNo!=''">
+                and goodsNo=#{goodsNo}
+            </if>
+            <if test="goodsName != null and goodsName!=''">
+                and goodsName=#{goodsName}
+            </if>
+            <if test="orderNo != null and orderNo!=''">
+                and orderNo=#{orderNo}
+            </if>
+            <if test="tardeNo != null and tardeNo!=''">
+                and tardeNo=#{tardeNo}
+            </if>
+            <if test="storeNo != null and storeNo!=''">
+                and storeNo=#{storeNo}
+            </if>
+            <if test="storeName != null and storeName!=''">
+                and storeName=#{storeName}
+            </if>
+            <if test="count != null and count!=''">
+                and count=#{count}
+            </if>
+            <if test="createTime != null and createTime!=''">
+                and createTime=#{createTime}
+            </if>
+            <if test="finshTime != null and finshTime!=''">
+                and finshTime=#{finshTime}
+            </if>
+            <if test="payType != null and payType!=''">
+                and payType=#{payType}
+            </if>
+            <if test="payAmount != null and payAmount!=''">
+                and payAmount=#{payAmount}
+            </if>
+            <if test="orderStatus != null and orderStatus!=''">
+                and orderStatus=#{orderStatus}
+            </if>
+            <if test="modifiTime != null and modifiTime!=''">
+                and modifiTime=#{modifiTime}
+            </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+
+    <insert id="insertOrders" parameterType="com.zb.pojo.Orders">
+        insert into orders(
+                        userId,
+                        goodsType,
+                        goodsNo,
+                        goodsName,
+                        orderNo,
+                        tardeNo,
+                        storeNo,
+                        storeName,
+                        count,
+                        createTime,
+                        finshTime,
+                        payType,
+                        payAmount,
+                        orderStatus,
+                        modifiTime)
+        values(
+                     #{userId},
+                     #{goodsType},
+                     #{goodsNo},
+                     #{goodsName},
+                     #{orderNo},
+                     #{tardeNo},
+                     #{storeNo},
+                     #{storeName},
+                     #{count},
+                     #{createTime},
+                     #{finshTime},
+                     #{payType},
+                     #{payAmount},
+                     #{orderStatus},
+                    #{modifiTime})
+    </insert>
+
+    <update id="updateOrders" parameterType="com.zb.pojo.Orders">
+        update orders
+        <trim prefix="set" suffixOverrides="," suffix="where orderNo=#{orderNo}">
+            <if test="userId != null and userId!=''">
+                userId=#{userId},
+            </if>
+            <if test="goodsType != null and goodsType!=''">
+                goodsType=#{goodsType},
+            </if>
+            <if test="goodsNo != null and goodsNo!=''">
+                goodsNo=#{goodsNo},
+            </if>
+            <if test="goodsName != null and goodsName!=''">
+                goodsName=#{goodsName},
+            </if>
+
+            <if test="tardeNo != null and tardeNo!=''">
+                tardeNo=#{tardeNo},
+            </if>
+            <if test="storeNo != null and storeNo!=''">
+                storeNo=#{storeNo},
+            </if>
+            <if test="storeName != null and storeName!=''">
+                storeName=#{storeName},
+            </if>
+            <if test="count != null and count!=''">
+                count=#{count},
+            </if>
+            <if test="createTime != null and createTime!=''">
+                createTime=#{createTime},
+            </if>
+            <if test="finshTime != null and finshTime!=''">
+                finshTime=NOW(),
+            </if>
+            <if test="payType != null and payType!=''">
+                payType=#{payType},
+            </if>
+            <if test="payAmount != null and payAmount!=''">
+                payAmount=#{payAmount},
+            </if>
+            <if test="orderStatus != null and orderStatus!=''">
+                orderStatus=#{orderStatus},
+            </if>
+            <if test="modifiTime != null and modifiTime!=''">
+                modifiTime=#{modifiTime}
+            </if>
+        </trim>
+    </update>
+</mapper>  
