@@ -20,6 +20,8 @@
         <module>communtiy.order</module>
         <module>community.purchaserecord.api</module>
         <module>community.purchaserecord</module>
+        <module>community.user</module>
+        <module>community.user.api</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

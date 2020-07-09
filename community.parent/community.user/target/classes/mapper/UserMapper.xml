@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.UserMapper">
+    <insert id="insertUser" parameterType="com.zb.pojo.User">
+        INSERT INTO `user` VALUES(NULL,#{userName},#{nickName},MD5(#{pwd}),#{phone},#{email},#{birthday},#{address},#{userRoleId})
+    </insert>
+
+    <select id="userLogin" resultType="com.zb.pojo.User">
+        SELECT * FROM `user` WHERE userName=#{userName} AND pwd=MD5(#{pwd})
+    </select>
+    <select id="findUserList" resultType="com.zb.pojo.User">
+        select * from user
+    </select>
+    <select id="findUserById" resultType="com.zb.pojo.User">
+        select * from user where id=#{id}
+    </select>
+    <update id="updatePwd">
+        update user set pwd=MD5(#{pwd}) where id=#{id}
+    </update>
+    <select id="findPwdByUser" resultType="java.lang.String">
+        select Pwd from user where userName=#{userName}
+    </select>
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+</mapper>

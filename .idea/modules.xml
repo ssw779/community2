@@ -11,6 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/community.parent/community.parent.iml" filepath="$PROJECT_DIR$/community.parent/community.parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/community.parent/community.purchaserecord/community.purchaserecord.iml" filepath="$PROJECT_DIR$/community.parent/community.purchaserecord/community.purchaserecord.iml" />
       <module fileurl="file://$PROJECT_DIR$/community.parent/community.purchaserecord.api/community.purchaserecord.api.iml" filepath="$PROJECT_DIR$/community.parent/community.purchaserecord.api/community.purchaserecord.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.user/community.user.iml" filepath="$PROJECT_DIR$/community.parent/community.user/community.user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.user.api/community.user.api.iml" filepath="$PROJECT_DIR$/community.parent/community.user.api/community.user.api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/community2.iml" filepath="$PROJECT_DIR$/.idea/community2.iml" />
       <module fileurl="file://$PROJECT_DIR$/community.parent/communtiy.banner.api/communtiy.banner.api.iml" filepath="$PROJECT_DIR$/community.parent/communtiy.banner.api/communtiy.banner.api.iml" />
       <module fileurl="file://$PROJECT_DIR$/community.parent/communtiy.order/communtiy.order.iml" filepath="$PROJECT_DIR$/community.parent/communtiy.order/communtiy.order.iml" />

@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="community.euerka" />
         <module name="community.common.api" />
+        <module name="community.user" />
         <module name="community.getway" />
         <module name="community.goods" />
         <module name="community.purchaserecord.api" />
         <module name="communtiy.banner.api" />
         <module name="community.goods.api" />
         <module name="communtiy.order.api" />
+        <module name="community.user.api" />
         <module name="community.banner" />
         <module name="community.purchaserecord" />
         <module name="communtiy.order" />
@@ -29,6 +31,8 @@
       <module name="community.parent" target="1.8" />
       <module name="community.purchaserecord" target="1.8" />
       <module name="community.purchaserecord.api" target="1.8" />
+      <module name="community.user" target="1.8" />
+      <module name="community.user.api" target="1.8" />
       <module name="communtiy.banner.api" target="1.8" />
       <module name="communtiy.order" target="1.8" />
       <module name="communtiy.order.api" target="1.8" />
