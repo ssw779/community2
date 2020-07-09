@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.banner/community.banner.iml" filepath="$PROJECT_DIR$/community.parent/community.banner/community.banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.common.api/community.common.api.iml" filepath="$PROJECT_DIR$/community.parent/community.common.api/community.common.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.euerka/community.euerka.iml" filepath="$PROJECT_DIR$/community.parent/community.euerka/community.euerka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.getway/community.getway.iml" filepath="$PROJECT_DIR$/community.parent/community.getway/community.getway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.goods/community.goods.iml" filepath="$PROJECT_DIR$/community.parent/community.goods/community.goods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.goods.api/community.goods.api.iml" filepath="$PROJECT_DIR$/community.parent/community.goods.api/community.goods.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.parent.iml" filepath="$PROJECT_DIR$/community.parent/community.parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.purchaserecord/community.purchaserecord.iml" filepath="$PROJECT_DIR$/community.parent/community.purchaserecord/community.purchaserecord.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.purchaserecord.api/community.purchaserecord.api.iml" filepath="$PROJECT_DIR$/community.parent/community.purchaserecord.api/community.purchaserecord.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.user/community.user.iml" filepath="$PROJECT_DIR$/community.parent/community.user/community.user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/community.user.api/community.user.api.iml" filepath="$PROJECT_DIR$/community.parent/community.user.api/community.user.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/community2.iml" filepath="$PROJECT_DIR$/.idea/community2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/communtiy.banner.api/communtiy.banner.api.iml" filepath="$PROJECT_DIR$/community.parent/communtiy.banner.api/communtiy.banner.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/communtiy.order/communtiy.order.iml" filepath="$PROJECT_DIR$/community.parent/communtiy.order/communtiy.order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/community.parent/communtiy.order.api/communtiy.order.api.iml" filepath="$PROJECT_DIR$/community.parent/communtiy.order.api/communtiy.order.api.iml" />
+    </modules>
+  </component>
+</project>
